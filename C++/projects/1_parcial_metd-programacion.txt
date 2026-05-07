@@ -1,0 +1,93 @@
+Primer Ejercicio
+
+#include <iostream>
+
+using namespace std;
+
+int main() {    
+    int n=5;
+    int m=30;
+    int notas[m]={59,59,59,59,59,60,60,60,60,60,70,70,80,89,89,99,99,99,99,99,99,99,99,99,99,99,99,99,99,99};
+    int frecuencia[n];
+    int max_repeticion = 0, min_repetecion = 999;
+    int nota_max,nota_min = 0;
+    
+    for (int i=0; i<n;i++){
+        frecuencia[i] = 0;
+    }
+ 
+    for (int i=0; i<m;i++) {
+        if (notas[i]<=59) {frecuencia[0]++;}
+        else if(notas[i]<=69) {frecuencia[1]++;}
+        else if(notas[i]<=79) {frecuencia[2]++;}
+        else if(notas[i]<=89) {frecuencia[3]++;}
+        else if(notas[i]<=100) {frecuencia[4]++;}
+    }
+
+
+    for (int i=0; i<n;i++) {
+        if (frecuencia[i] > max_repeticion) {
+            max_repeticion = frecuencia[i];
+            nota_max = i;
+        }
+        if (frecuencia[i] < min_repetecion) {
+            min_repetecion = frecuencia[i] ;
+            nota_min  = i;
+        } 
+    }
+
+    cout <<"Notas de los " << m << " alumnos:\n";
+    for (int i=0; i<m;i++) {
+        cout << notas[i] << " ";
+    }
+    cout << "\n\n";
+    
+    
+    //Frecuencia de las notas (30 alumnos)
+    cout << "#Nota  Frecuencia" <<endl;
+    for (int i=0; i<n;i++) {
+        cout << i+1 << "      " << frecuencia[i] << endl;
+    }
+    
+    cout << "La nota con mayor frecuencia es :" << nota_max+1 << " se repite : " << max_repeticion << " veces." <<endl;
+    cout << "La nota con menor frecuencia es :" << nota_min+1 << " se repite : " << min_repetecion << " veces." <<endl; 
+    return 0;
+}
+
+
+Ejercicio 2
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+
+    int v1[5] = {20,10,30,50,40};
+    int v2[5] = {45,25,35,15,55};
+    int v3[10];
+    
+
+    for (int i=0; i<5;i++) {
+        v3[i] = v1[i];
+        v3[5+i]= v2[i];
+    
+    }
+
+    for (int i=0;i<9;i++) {
+        for(int j=0;j<9-i;j++) {
+          if(v3[j]>v3[j+1]) {
+            int temp = v3[j];
+            v3[j] = v3[j+1];
+            v3[j+1] = temp;
+          }  
+        }
+    }
+
+
+    for (int i=0; i<10;i++) {
+        cout << v3[i] << "  ";
+    }
+
+    return 0;
+}
